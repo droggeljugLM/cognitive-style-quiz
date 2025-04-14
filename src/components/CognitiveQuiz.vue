@@ -228,31 +228,36 @@ export default {
         };
     },
     computed: {
-        totalQuestions() {
-            return this.questions.length;
-        },
-        progressPercent() {
-            return Math.round((this.current / this.totalQuestions) * 100);
-        }
+    totalQuestions() {
+      return this.questions.length;
     },
-    created() {
-        this.shuffleCurrentOptions();
-    },
-    methods: {
-        shuffleCurrentOptions() {
-            const currentOptions = this.questions[this.current].options;
-            this.shuffledOptions = currentOptions
-                .map((text, index) => ({ text, originalIndex: index }))
-                .sort(() => Math.random() - 0.5);
-        },
-        answer(index) {
-            this.score[index]++;
-            this.current++;
-            if (this.current < this.questions.length) {
-                this.shuffleCurrentOptions();
-            }
-        }
+    progressPercent() {
+      return Math.round((this.current / this.totalQuestions) * 100);
     }
+  },
+  created() {
+    this.shuffleCurrentOptions();
+  },
+  methods: {
+    shuffleCurrentOptions() {
+      const currentOptions = this.questions[this.current].options;
+      this.shuffledOptions = currentOptions
+        .map((text, index) => ({ text, originalIndex: index }))
+        .sort(() => Math.random() - 0.5);
+    },
+    answer(index) {
+      this.score[index]++;
+      this.current++;
+      if (this.current < this.questions.length) {
+        this.shuffleCurrentOptions();
+      } else {
+        setTimeout(() => {
+          const confetti = document.querySelector(".confetti");
+          if (confetti) confetti.classList.add("active");
+        }, 400);
+      }
+    }
+  }
 };
 </script>
 
