@@ -31,8 +31,7 @@
             </div>
           </div>
         </div>
-        $1
-
+        <div class="confetti"></div>
         <div class="project-link">
           <a href="https://github.com/droggeljugLM/cognitive-style-quiz" target="_blank">
             🔗 查看项目源码 on GitHub
@@ -400,5 +399,23 @@ export default {
   100% {
     opacity: 0;
   }
+}
+
+.project-link {
+  text-align: center;
+  margin-top: 2rem;
+}
+.project-link a {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+.project-link a:hover {
+  background-color: #0056b3;
 }
 </style>
