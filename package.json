@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://droggejjugLM.github.io/cognitive-style-quiz",
+  "homepage": "https://droggeljugLM.github.io/cognitive-style-quiz",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
