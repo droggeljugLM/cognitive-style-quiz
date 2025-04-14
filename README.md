@@ -22,7 +22,7 @@
 
 ## 🚀 在线体验
 
-👉 [点击此处访问问卷页面](https://droggeljugLM.github.io/cognitive-style-quiz/)
+👉 [点击此处访问问卷页面](https://droggeljugLM.github.io/cognitive-style-quiz/){:target="_blank"}
 
 ---
 

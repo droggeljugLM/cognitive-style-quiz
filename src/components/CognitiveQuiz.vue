@@ -1,39 +1,39 @@
 <template>
     <div class="container fixed-width">
-        <h1>认知风格测试问卷</h1>
-
-        <!-- 进度条 -->
-        <div class="progress-bar">
-            <div class="progress" :style="{ width: progressPercent + '%' }"></div>
+      <h1>认知风格测试问卷</h1>
+  
+      <div class="progress-bar">
+        <div class="progress" :style="{ width: progressPercent + '%' }"></div>
+      </div>
+  
+      <transition name="fade" mode="out-in">
+        <div v-if="current < questions.length" key="question" class="question-block">
+          <h3>第 {{ current + 1 }} 题</h3>
+          <p>{{ questions[current].text }}</p>
+          <div class="options">
+            <button v-for="(option, index) in shuffledOptions" :key="index" @click="answer(option.originalIndex)">
+              {{ option.text }}
+            </button>
+          </div>
         </div>
-
-        <div v-if="current < questions.length" class="question-block">
-            <h3>第 {{ current + 1 }} 题</h3>
-            <p>{{ questions[current].text }}</p>
-            <div class="options">
-                <button v-for="(option, index) in shuffledOptions" :key="index" @click="answer(option.originalIndex)">
-                    {{ option.text }}
-                </button>
+  
+        <div v-else key="result" class="result-block">
+          <h2 class="celebrate">🎉 测试完成！</h2>
+          <h3>你的认知倾向得分：</h3>
+          <div class="bar-chart">
+            <div v-for="(style, index) in styles" :key="index" class="bar-item">
+              <span>{{ style }}</span>
+              <div class="bar">
+                <div class="bar-fill" :style="{ width: (score[index] / totalQuestions * 100) + '%' }"></div>
+                <span class="score">{{ score[index] }}</span>
+              </div>
             </div>
+          </div>
+          <div class="confetti"></div>
         </div>
-
-        <div v-else class="result-block">
-            <h2>测试完成！</h2>
-            <h3>你的认知倾向得分：</h3>
-
-            <!-- 分数图表 -->
-            <div class="bar-chart">
-                <div v-for="(style, index) in styles" :key="index" class="bar-item">
-                    <span>{{ style }}</span>
-                    <div class="bar">
-                        <div class="bar-fill" :style="{ width: (score[index] / totalQuestions * 100) + '%' }"></div>
-                        <span class="score">{{ score[index] }}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </transition>
     </div>
-</template>
+  </template>
 
 <script>
 export default {
@@ -347,5 +347,36 @@ export default {
     padding: 1rem;
     width: 100%;
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.4s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.confetti {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: radial-gradient(circle, rgba(255,0,102,0.2) 1px, transparent 1px),
+                    radial-gradient(circle, rgba(0,204,255,0.2) 1px, transparent 1px);
+  background-size: 12px 12px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 10;
+}
+.confetti.active {
+  opacity: 1;
+  animation: confetti-fadeout 2.5s forwards;
+}
+
+@keyframes confetti-fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 </style>
