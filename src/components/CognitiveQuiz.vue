@@ -258,7 +258,7 @@ export default {
 
 <style scoped>
 .container.fixed-width {
-    width: 720px;
+    width: 960px;
     max-width: 100%;
     margin: 2rem auto;
     padding: 2rem;
