@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container fixed-width">
         <h1>认知风格测试问卷</h1>
 
         <!-- 进度条 -->
@@ -257,13 +257,18 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    max-width: 600px;
-    margin: auto;
+.container.fixed-width {
+    width: 720px;
+    max-width: 100%;
+    margin: 2rem auto;
     padding: 2rem;
     background: #ffffff;
     color: #1a1a1a;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
 .question-block,
