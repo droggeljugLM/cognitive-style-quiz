@@ -7,17 +7,23 @@
       </div>
   
       <transition name="fade" mode="out-in">
-        <div v-if="current < questions.length" key="question" class="question-block">
+        <component :is="current < questions.length ? 'div' : 'div'" :key="current" class="question-block">
           <h3>第 {{ current + 1 }} 题</h3>
           <p>{{ questions[current].text }}</p>
           <div class="options">
-            <button v-for="(option, index) in shuffledOptions" :key="index" @click="answer(option.originalIndex)">
-              {{ option.text }}
-            </button>
+            <transition-group name="fade" tag="div">
+              <button
+                v-for="(option, index) in shuffledOptions"
+                :key="index + '-' + current"
+                @click="answer(option.originalIndex)"
+              >
+                {{ option.text }}
+              </button>
+            </transition-group>
           </div>
-        </div>
+        </component>
   
-        <div v-else key="result" class="result-block">
+        <div v-if="current >= questions.length" key="result" class="result-block">
           <h2 class="celebrate">🎉 测试完成！</h2>
           <h3>你的认知倾向得分：</h3>
           <div class="bar-chart">
