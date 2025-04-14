@@ -341,4 +341,11 @@ export default {
     white-space: nowrap;
     font-size: 0.9rem;
 }
+
+@media (max-width: 768px) {
+  .container.fixed-width {
+    padding: 1rem;
+    width: 100%;
+  }
+}
 </style>
