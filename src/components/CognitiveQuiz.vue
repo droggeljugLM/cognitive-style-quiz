@@ -31,7 +31,13 @@
             </div>
           </div>
         </div>
-        <div class="confetti"></div>
+        $1
+
+        <div class="project-link">
+          <a href="https://github.com/droggeljugLM/cognitive-style-quiz" target="_blank">
+            🔗 查看项目源码 on GitHub
+          </a>
+        </div>
       </div>
     </transition>
   </div>
@@ -358,7 +364,7 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.4s;
+  transition: opacity 0.2s;
 }
 
 .fade-enter-from,
