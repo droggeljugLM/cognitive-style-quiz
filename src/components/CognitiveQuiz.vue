@@ -5,7 +5,6 @@
     <div class="progress-bar">
       <div class="progress" :style="{ width: progressPercent + '%' }"></div>
     </div>
-
     <transition name="fade" mode="out-in">
       <div v-if="current < questions.length" :key="current" class="question-block">
         <h3>第 {{ current + 1 }} 题</h3>
@@ -35,7 +34,6 @@
         <div class="confetti"></div>
       </div>
     </transition>
-
   </div>
 </template>
 
